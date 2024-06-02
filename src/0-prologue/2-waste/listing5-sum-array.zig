@@ -1,11 +1,13 @@
 const std = @import("std");
 
 const CPU_MAX_GHZ = 3.6;
-
-const ARRAY_SIZE = 4096;
 const TRY_COUNT = 100_000;
 
+const ARRAY_SIZE = 4096;
 const EXPECTED_RESULT = 8386560;
+
+// const ARRAY_SIZE = 8192;
+// const EXPECTED_RESULT = 33550336;
 
 fn sumArray(array: []const u32) u32 {
     var result: u32 = 0;
@@ -42,7 +44,7 @@ pub fn main() !u8 {
 
         const result = sumArray(array);
         if (result != EXPECTED_RESULT) {
-            std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+            std.debug.print("Expected {} bot got {} .\n", .{ EXPECTED_RESULT, result });
             return 1;
         }
 
@@ -52,7 +54,14 @@ pub fn main() !u8 {
         }
     }
 
+    const cycles = @as(f64, @floatFromInt(min_time)) * CPU_MAX_GHZ;
+    const cycles_per_add = cycles / ARRAY_SIZE;
+    const adds_per_cycle = 1 / cycles_per_add;
+
     std.debug.print("Time: {} nanoseconds\n", .{min_time});
+    std.debug.print("Cycles: {d}\n", .{cycles});
+    std.debug.print("Cycles/add: {d}\n", .{cycles_per_add});
+    std.debug.print("Adds/cycle: {d}\n", .{adds_per_cycle});
 
     return 0;
 }
