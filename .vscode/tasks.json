@@ -1,0 +1,18 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "commpile to asm small",
+            "type": "shell",
+            "command": "zig build-lib -O ReleaseSmall -femit-bin=tmp/${fileBasenameNoExtension}.a -femit-asm=tmp/${fileBasenameNoExtension}.s ${file}",
+            "problemMatcher": [
+                "$zig"
+            ],
+            "presentation": {
+                "clear": true
+            }
+        },
+    ]
+}
