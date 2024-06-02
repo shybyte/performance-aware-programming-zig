@@ -42,7 +42,7 @@ pub fn main() !u8 {
 
         const start_time = std.time.nanoTimestamp();
 
-        const result = sumArray(array);
+        const result = @call(.never_inline, sumArray, .{array});
         if (result != EXPECTED_RESULT) {
             std.debug.print("Expected {} bot got {} .\n", .{ EXPECTED_RESULT, result });
             return 1;

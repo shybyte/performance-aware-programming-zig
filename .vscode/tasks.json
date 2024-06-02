@@ -47,5 +47,16 @@
                 "clear": true
             }
         },
+        {
+            "label": "commpile current zig file to asm fast",
+            "type": "shell",
+            "command": "zig build-lib -O ReleaseFast -femit-bin=tmp/${fileBasenameNoExtension}.a -femit-asm=tmp/${fileBasenameNoExtension}.s ${file}",
+            "problemMatcher": [
+                "$zig"
+            ],
+            "presentation": {
+                "clear": true
+            }
+        },
     ]
 }
