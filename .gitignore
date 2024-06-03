@@ -4,3 +4,9 @@ zig-cache
 *.a
 *.o
 *.zon
+
+*.wasm
+*.wasm.o
+
+turbo-*.cfg
+turbo-*.json
