@@ -44,7 +44,7 @@ pub fn main() !u8 {
 
         const result = @call(.never_inline, sumArray, .{array});
         if (result != EXPECTED_RESULT) {
-            std.debug.print("Expected {} bot got {} .\n", .{ EXPECTED_RESULT, result });
+            std.debug.print("Expected {} but got {} .\n", .{ EXPECTED_RESULT, result });
             return 1;
         }
 

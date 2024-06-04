@@ -28,7 +28,7 @@
         {
             "label": "run current zig file in small mode",
             "type": "shell",
-            "command": "zig run -O ReleaseSmall ${file}",
+            "command": "zig run -O ReleaseSmall -femit-asm=tmp/${fileBasenameNoExtension}.s  ${file}",
             "problemMatcher": [
                 "$zig"
             ],
@@ -37,7 +37,18 @@
             }
         },
         {
-            "label": "commpile current zig file to asm small",
+            "label": "compile current zig file in small mode",
+            "type": "shell",
+            "command": "zig build-exe -O ReleaseSmall -femit-asm=tmp/${fileBasenameNoExtension}.s  ${file}",
+            "problemMatcher": [
+                "$zig"
+            ],
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
+            "label": "compile current zig file to asm small",
             "type": "shell",
             "command": "zig build-lib -O ReleaseSmall -femit-bin=tmp/${fileBasenameNoExtension}.a -femit-asm=tmp/${fileBasenameNoExtension}.s ${file}",
             "problemMatcher": [
@@ -48,7 +59,7 @@
             }
         },
         {
-            "label": "commpile current zig file to asm fast",
+            "label": "compile current zig file to asm fast",
             "type": "shell",
             "command": "zig build-lib -O ReleaseFast -femit-bin=tmp/${fileBasenameNoExtension}.a -femit-asm=tmp/${fileBasenameNoExtension}.s ${file}",
             "problemMatcher": [
