@@ -20,7 +20,8 @@ fn sumArraySingleScalar(array: []const u32) u32 {
 }
 
 fn sumArraySimd(arr: []const u32) u32 {
-    const width = 128;
+    // AVX/AVX2 = 256 bit = 8 u32
+    const width = 128; // best on my machine in small and fast mode
     const Vector = @Vector(width, u32);
     var sum: Vector = @splat(0);
     var i: usize = 0;
@@ -45,7 +46,7 @@ fn sumArraySimd(arr: []const u32) u32 {
 }
 
 fn sumArrayDualSimd(arr: []const u32) u32 {
-    const width = 64;
+    const width = 8;
     const Vector = @Vector(width, u32);
 
     var sum0: Vector = @splat(0);
