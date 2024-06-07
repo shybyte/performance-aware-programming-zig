@@ -74,9 +74,11 @@ async function main() {
   const benchmarkResults = [];
 
   const sumWasm = () => myWasmLib.sumArrayZig(view.byteOffset / 4, array.length);
+  const sumWasmSimd = () => myWasmLib.sumArraySimd(view.byteOffset / 4, array.length);
+  const sumArray8Scalar = () => myWasmLib.sumArray8Scalar(view.byteOffset / 4, array.length);
   const sumJS = () => sumArrayJsForIndex(array);
   
-  const functionsToTest = [sumJS, sumWasm];
+  const functionsToTest = [sumJS, sumWasm, sumWasmSimd, sumArray8Scalar];
   
   for (const functionToTest of functionsToTest) {
     const histogram = measureSpeed(EXPECTED_RESULT, () => functionToTest());
