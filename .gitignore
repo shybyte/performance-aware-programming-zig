@@ -8,5 +8,7 @@ zig-cache
 *.wasm
 *.wasm.o
 
+tmp/
+
 turbo-*.cfg
 turbo-*.json
