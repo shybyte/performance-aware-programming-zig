@@ -15,6 +15,17 @@
             }
         },
         {
+            "label": "test current zig file in debug mode",
+            "type": "shell",
+            "command": "zig test ${file}",
+            "problemMatcher": [
+                "$zig"
+            ],
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
             "label": "run current zig file in fast mode",
             "type": "shell",
             "command": "zig run -O ReleaseFast ${file}",
